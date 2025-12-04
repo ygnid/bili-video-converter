@@ -31,7 +31,7 @@ def remove_first_9_bytes_if_zero(input_file, output_file=None):
 
         # 检查文件大小是否至少有9个字节
         if len(data) < 9:
-            print(f"文件大小小于9字节，无法判断前9个字节")
+            print("文件大小小于9字节，无法判断前9个字节")
             return False
 
         # 检查文件名是否.m4s
@@ -235,7 +235,7 @@ def merge_m4s_to_mp4_with_ffmpeg(m4s_files, title, group_title, output_path):
                 print(f"    输出文件大小: {size:.2f} MB")
             return True
         else:
-            print(f"    ✗ FFmpeg合并失败:")
+            print("    ✗ FFmpeg合并失败:")
             print(f"      错误输出: {result.stderr[:500]}")  # 只显示前500字符
             return False
 
@@ -365,8 +365,7 @@ def test():
 def parse_args():
     parser = argparse.ArgumentParser(
         prog="bili_convert.py",
-        description="处理Bilibili下载的.m4s文件并合并为MP4文件。",
-        epilog="示例: python bili_convert.py [base_directory] [output_directory] [--audio]")
+        description="处理Bilibili下载的.m4s文件并合并为MP4文件。")
     parser.add_argument("base_directory", nargs='?', default=".",
                         help="要处理的基础目录，默认为当前目录")
     parser.add_argument("output_directory", nargs='?', default=None,
