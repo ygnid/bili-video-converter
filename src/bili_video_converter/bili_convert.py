@@ -7,6 +7,7 @@ bili_convert.py
 """
 
 import os
+import sys
 import json
 import re
 import subprocess
@@ -261,8 +262,8 @@ def read_json_data(json_file_path):
         with open(json_file_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
-        title = data.get('title', '')
-        group_title = data.get('groupTitle', '')
+        title = clean_Win_illegal_chars(data.get('title', ''))
+        group_title = clean_Win_illegal_chars(data.get('groupTitle', ''))
 
         print("  读取JSON数据:")
         print(f"    标题: {title}")
@@ -335,15 +336,16 @@ def process_directory(base_dir, output_path=None,
     print("目录处理完成。")
 
 
+def clean_Win_illegal_chars(input_path):
+    # 定义非法字符的正则表达式
+    illegal_chars = r'[<>:"/\\|?*]'
+    replace_with = '_'
+    # 替换非法字符为空字符串
+    cleaned_path = re.sub(illegal_chars, replace_with, input_path)
+    return cleaned_path
+
+
 def test():
-    # 示例1: 覆盖原文件
-    # remove_first_9_bytes_if_zero("test.bin")
-
-    # 示例2: 保存到新文件
-    # remove_first_9_bytes_if_zero("test.bin", "test_modified.bin")
-
-    # 示例3: 测试函数
-    # 创建一个测试文件
     test_data = b'000000000Hello World!'  # 前9个字节是'0'
     file_name = "test_data/test.m4s"
     with open(file_name, "wb") as f:
@@ -379,8 +381,10 @@ def parse_args():
     return parser.parse_args()
 
 
-# 示例用法
-if __name__ == "__main__":
+def main():
+    """
+    Command-line entry
+    """
     args = parse_args()
     base_directory = args.base_directory
     output_directory = args.output_directory
@@ -395,3 +399,8 @@ if __name__ == "__main__":
 
     process_directory(base_directory, output_directory,
                       process_mode, audio_directory)
+
+
+# 示例用法
+if __name__ == "__main__":
+    sys.exit(main())

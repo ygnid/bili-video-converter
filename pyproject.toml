@@ -4,14 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "bili-video-converter"
-version = "1.0.0"
+version = "0.1.1"
 authors = [{ name = "Yuyu Ding", email = "dyyster@gmail.com" }]
 description = "A tool to convert Bilibili downloaded videos to MP4 format."
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
 ]
 license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
@@ -20,15 +20,12 @@ license-files = ["LICEN[CS]E*"]
 Homepage = "https://github.com/ygnid/bili-video-converter"
 Issues = "https://github.com/ygnid/bili-video-converter/issues"
 
+[project.scripts]
+bili-converter = "bili_video_converter.bili_convert:main"
+
 [tool.hatch.build.targets.sdist]
-include = [
-  "src/bili-video-converter/*.py",
-  "/tests",
-]
-exclude = [
-  "*.json",
-  "pkg/_compat.py",
-]
+include = ["src/bili_video_converter/*.py", "/tests"]
+exclude = ["*.json", "pkg/_compat.py"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/bili-video-converter"]
+packages = ["src/bili_video_converter"]
