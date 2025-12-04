@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+bili_convert.py
+用于处理Bilibili下载的.m4s文件，删除前9个字节的'0'字符（如果存在），并使用FFmpeg合并为MP4文件。
+"""
+
 import os
 import json
 import re
