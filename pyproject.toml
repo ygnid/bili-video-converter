@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "bili-video-converter"
-version = "0.1.1"
+version = "0.1.2"
 authors = [{ name = "Yuyu Ding", email = "dyyster@gmail.com" }]
 description = "A tool to convert Bilibili downloaded videos to MP4 format."
 readme = "README.md"
@@ -15,6 +15,7 @@ classifiers = [
 ]
 license = "GPL-3.0-or-later"
 license-files = ["LICEN[CS]E*"]
+dependencies = ["argparse>=1.4.0"]
 
 [project.urls]
 Homepage = "https://github.com/ygnid/bili-video-converter"
