@@ -366,7 +366,7 @@ def test():
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        prog="bili_convert.py",
+        prog=sys.argv[0],
         description="处理Bilibili下载的.m4s文件并合并为MP4文件。")
     parser.add_argument("base_directory", nargs='?', default=".",
                         help="要处理的基础目录，默认为当前目录")
